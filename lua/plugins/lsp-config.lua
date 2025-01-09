@@ -61,6 +61,14 @@ return {
 
       -- Keymap for applying all code actions in the file
       vim.keymap.set("n", "<leader>aa", apply_all_code_actions, { noremap = true, silent = true })
+
+      -- Apply code format after save
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = "*",
+        callback = function()
+          vim.lsp.buf.format({ async = true })
+        end,
+      })
     end
   }
 }
