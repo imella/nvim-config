@@ -63,10 +63,10 @@ return {
       vim.keymap.set("n", "<leader>aa", apply_all_code_actions, { noremap = true, silent = true })
 
       -- Apply code format after save
-      vim.api.nvim_create_autocmd("BufWritePost", {
+      vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*",
         callback = function()
-          vim.lsp.buf.format({ async = true })
+          vim.lsp.buf.format({ async = false })
         end,
       })
     end
