@@ -3,15 +3,15 @@ return {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" }
+        ensure_installed = { "lua_ls" },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -20,15 +20,15 @@ return {
       lspconfig.lua_ls.setup({})
       lspconfig.ruby_lsp.setup({
         init_options = {
-          formatter = 'standard',
-          linters = { 'standard' },
+          formatter = "standard",
+          linters = { "standard" },
         },
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-      vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
 
@@ -56,9 +56,6 @@ return {
         end
       end
 
-
-
-
       -- Keymap for applying all code actions in the file
       vim.keymap.set("n", "<leader>aa", apply_all_code_actions, { noremap = true, silent = true })
 
@@ -69,6 +66,6 @@ return {
           vim.lsp.buf.format({ async = false })
         end,
       })
-    end
-  }
+    end,
+  },
 }
